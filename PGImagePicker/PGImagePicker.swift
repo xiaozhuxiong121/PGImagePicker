@@ -149,9 +149,9 @@ open class PGImagePicker: UIViewController {
         let width: CGFloat = 50
         let height: CGFloat = 30.0
         let x: CGFloat = (PGImagePickerScreenSize.width - width) / 2
-        var y: CGFloat = PGImagePickerScreenSize.height - 20 - height / 2
+        var y: CGFloat = PGImagePickerScreenSize.height - 30 - height / 2
         if self.pageControlType == .type3 {
-            y = 15
+            y = 30
         }
         let frame = CGRect(x: x, y: y, width: width, height: height)
         countLabel = UILabel(frame: frame)
