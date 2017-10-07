@@ -12,5 +12,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'PGImagePicker'
+  s.dependency 'Kingfisher'
 end
  
