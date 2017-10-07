@@ -1,0 +1,6 @@
+framework module PGActionSheet {
+  umbrella header "PGActionSheet-umbrella.h"
+
+  export *
+  module * { export * }
+}

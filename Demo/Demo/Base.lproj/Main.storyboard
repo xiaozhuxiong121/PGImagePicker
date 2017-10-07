@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Rcs-qL-yCw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PhotoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M9N-4b-JNI"/>
+                        <viewControllerLayoutGuide type="bottom" id="yeH-fd-eGp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test1" translatesAutoresizingMaskIntoConstraints="NO" id="yJO-3J-dQm">
+                                <rect key="frame" x="42" y="93" width="112" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="EhP-Ws-6rC" appends="YES" id="fHg-FF-IW3"/>
+                                </connections>
+                            </imageView>
+                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test2" translatesAutoresizingMaskIntoConstraints="NO" id="ATD-Tn-xVb">
+                                <rect key="frame" x="200" y="100" width="123" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0BU-vg-Boo" appends="YES" id="lHt-6T-qbS"/>
+                                </connections>
+                            </imageView>
+                            <imageView tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test3" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-Wm-vMh">
+                                <rect key="frame" x="43" y="237" width="112" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ESI-PS-Acv" appends="YES" id="HCY-69-4vc"/>
+                                </connections>
+                            </imageView>
+                            <imageView tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test4" translatesAutoresizingMaskIntoConstraints="NO" id="Ajm-x6-AJ0">
+                                <rect key="frame" x="197" y="237" width="112" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="5oj-9w-t5i" appends="YES" id="0yc-nd-g02"/>
+                                </connections>
+                            </imageView>
+                            <imageView tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test5" translatesAutoresizingMaskIntoConstraints="NO" id="5Iq-Rv-2gS">
+                                <rect key="frame" x="42" y="375" width="112" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fBr-z0-x3O" appends="YES" id="aY8-lO-ckt"/>
+                                </connections>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-yH-l3r">
+                                <rect key="frame" x="168" y="572" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V0g-uY-VSN"/>
+                    <connections>
+                        <outletCollection property="imageViews" destination="yJO-3J-dQm" collectionClass="NSMutableArray" id="Jq6-6E-HNY"/>
+                        <outletCollection property="imageViews" destination="ATD-Tn-xVb" collectionClass="NSMutableArray" id="l18-Df-qLH"/>
+                        <outletCollection property="imageViews" destination="H1P-Wm-vMh" collectionClass="NSMutableArray" id="BGQ-dz-MBW"/>
+                        <outletCollection property="imageViews" destination="Ajm-x6-AJ0" collectionClass="NSMutableArray" id="FKl-aG-f8B"/>
+                        <outletCollection property="imageViews" destination="5Iq-Rv-2gS" collectionClass="NSMutableArray" id="dbM-Ww-jhN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EhP-Ws-6rC">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="Nq1-7d-5cW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0BU-vg-Boo">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="FeF-0Q-Xdr"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ESI-PS-Acv">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="VxO-Vi-hQ7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5oj-9w-t5i">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="oHH-Sg-xtd"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="fBr-z0-x3O">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="c6c-BK-jf3"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="2at-cm-mzt">
+                    <connections>
+                        <action selector="imageViewTap:" destination="BYZ-38-t0r" id="zTN-9m-K4l"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2606" y="272"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="X8m-rn-kG0">
+            <objects>
+                <viewController id="3PS-9v-oDc" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V6m-xy-Mma"/>
+                        <viewControllerLayoutGuide type="bottom" id="eKD-Cr-TY4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ig8-Ux-38g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8i-Ul-I34">
+                                <rect key="frame" x="33" y="120" width="308" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="样式一">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="0" id="buw-bz-HHr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcU-xM-cY5">
+                                <rect key="frame" x="33" y="214" width="308" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="样式二">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="1" id="Bvv-Iv-o1c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ3-rB-gwp">
+                                <rect key="frame" x="33" y="310" width="308" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="样式三">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="2" id="jCs-14-Ii6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-bS-8iF">
+                                <rect key="frame" x="33" y="403" width="308" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="加载网络图片">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="3" id="cZF-ZX-ocy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jps-Ri-vMW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QLM-mP-XNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="271.21439280359823"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dz0-cr-3mf">
+            <objects>
+                <navigationController id="Rcs-qL-yCw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="feh-Tw-Wuo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3PS-9v-oDc" kind="relationship" relationship="rootViewController" id="nGm-lO-beH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3P2-R1-wcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="273"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="test1" width="533" height="300"/>
+        <image name="test2" width="500" height="411"/>
+        <image name="test3" width="500" height="304"/>
+        <image name="test4" width="500" height="324"/>
+        <image name="test5" width="500" height="400"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cZF-ZX-ocy"/>
+    </inferredMetricsTieBreakers>
+</document>

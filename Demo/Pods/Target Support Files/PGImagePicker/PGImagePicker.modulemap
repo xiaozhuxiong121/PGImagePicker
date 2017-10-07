@@ -1,0 +1,6 @@
+framework module PGImagePicker {
+  umbrella header "PGImagePicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
