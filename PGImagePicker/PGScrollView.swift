@@ -13,8 +13,8 @@ struct PGImagePickerScreenSize {
     static let height = UIScreen.main.bounds.size.height
 }
 
-typealias tapCallback = (UIImageView)->()
-class PGScrollView: UIScrollView, UIScrollViewDelegate {
+public typealias tapCallback = (UIImageView)->()
+open class PGScrollView: UIScrollView, UIScrollViewDelegate {
     
     //MARK: - public property
     public var tapCallback: tapCallback!
@@ -34,7 +34,7 @@ class PGScrollView: UIScrollView, UIScrollViewDelegate {
     }
     
     //MARK: - system cycle
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -70,11 +70,11 @@ class PGScrollView: UIScrollView, UIScrollViewDelegate {
     }
     
     //MARK: - UIScrollViewDelegate
-    internal func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    internal func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         var xcenter = self.center.x , ycenter = self.center.y;
         xcenter = scrollView.contentSize.width > scrollView.frame.size.width ? scrollView.contentSize.width / 2 : xcenter;
         ycenter = scrollView.contentSize.height > scrollView.frame.size.height ? scrollView.contentSize.height / 2 : ycenter;
@@ -145,7 +145,7 @@ extension PGScrollView {
 }
 
 extension PGScrollView {
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = (touches as NSSet).anyObject() as! UITouch
         if touch.tapCount == 1 {
             self.perform(#selector(tapHandler(_:)), with: nil, afterDelay: 0.2)

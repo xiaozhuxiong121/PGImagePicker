@@ -15,7 +15,7 @@ public enum PageControlType: Int {
     case type3
 }
 
-public class PGImagePicker: UIViewController {
+open class PGImagePicker: UIViewController {
     
     //MARK: - pulic property
     public var delegate: PGImagePickerDelegate?
@@ -68,12 +68,12 @@ public class PGImagePicker: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isAnimated = true
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.delegate != nil  {
             var imageView: UIImageView = self.currentImageView
@@ -84,13 +84,13 @@ public class PGImagePicker: UIViewController {
         }
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
         self.view.addGestureRecognizer(longPress)
     }
     
-    public override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if (self.pageControl != nil) {
             self.view.bringSubview(toFront: self.pageControl)
@@ -161,7 +161,7 @@ public class PGImagePicker: UIViewController {
         self.view.addSubview(countLabel)
     }
     
-    internal func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
+    open func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
         cell.scrollView.imageView.image = imageView.image
     }
 }

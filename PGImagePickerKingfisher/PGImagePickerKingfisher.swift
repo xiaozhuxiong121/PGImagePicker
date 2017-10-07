@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import PGImagePicker
 
 public class PGImagePickerKingfisher: PGImagePicker {
     
@@ -16,7 +17,7 @@ public class PGImagePickerKingfisher: PGImagePicker {
     public var placeholder: UIImage!
     public var imageUrls: [String]!
     
-    override internal func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
+    override public func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
         if imageUrls != nil && indexPath.row < imageUrls.count {
             let cellImageView: UIImageView =  cell.scrollView.imageView
             let url = URL(string: self.imageUrls[indexPath.row])!
