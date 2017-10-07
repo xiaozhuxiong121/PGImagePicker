@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PGImagePicker"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "多图浏览"
   s.homepage     = "https://github.com/xiaozhuxiong121/PGImagePicker"
   s.license      = "MIT"
