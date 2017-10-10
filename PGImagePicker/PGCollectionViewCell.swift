@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class PGCollectionViewCell: UICollectionViewCell {
+public class PGCollectionViewCell: UICollectionViewCell {
     
     public lazy var scrollView: PGScrollView! = {
         let scrollView = PGScrollView(frame: self.contentView.bounds)
