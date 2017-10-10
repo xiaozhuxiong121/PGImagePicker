@@ -14,7 +14,7 @@ struct PGImagePickerScreenSize {
 }
 
 public typealias tapCallback = (UIImageView)->()
-open class PGScrollView: UIScrollView, UIScrollViewDelegate {
+public class PGScrollView: UIScrollView, UIScrollViewDelegate {
     
     //MARK: - public property
     public var tapCallback: tapCallback!
@@ -145,7 +145,7 @@ extension PGScrollView {
 }
 
 extension PGScrollView {
-    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch = (touches as NSSet).anyObject() as! UITouch
         if touch.tapCount == 1 {
             self.perform(#selector(tapHandler(_:)), with: nil, afterDelay: 0.2)

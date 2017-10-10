@@ -10,7 +10,7 @@ import UIKit
 
 class PGTableViewTitleCell: UITableViewCell {
     //MARK: - public property
-    public var titlelabel: UILabel!
+    internal var titlelabel: UILabel!
     
     //MARK: - system cycle
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

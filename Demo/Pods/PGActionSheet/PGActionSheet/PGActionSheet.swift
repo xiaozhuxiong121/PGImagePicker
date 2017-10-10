@@ -12,15 +12,15 @@ import UIKit
 public typealias handlerAction = (Int)->()
 public class PGActionSheet: UIViewController {
     //MARK: - public property
-    public var handler: handlerAction!
-    public var delegate: PGActionSheetDelegate!
-    public var textColor: UIColor!
-    public var textFont: UIFont!
-    public var cancelTextColor: UIColor!
-    public var cancelTextFont: UIFont!
-    public var actionSheetTitle: String!
-    public var actionSheetTitleFont: UIFont!
-    public var actionSheetTitleColor: UIColor!
+    public var handler: handlerAction?
+    public var delegate: PGActionSheetDelegate?
+    public var textColor: UIColor?
+    public var textFont: UIFont?
+    public var cancelTextColor: UIColor?
+    public var cancelTextFont: UIFont?
+    public var actionSheetTitle: String?
+    public var actionSheetTitleFont: UIFont?
+    public var actionSheetTitleColor: UIColor?
     /// 为了更好的融合到当前视图中，弹出框默认alpha是0.7，默认是true，如果你不想要半透明，可以设置为false
     public var actionSheetTranslucent: Bool = true {
         didSet {
@@ -76,7 +76,7 @@ public class PGActionSheet: UIViewController {
         super.viewWillAppear(animated)
         var height: CGFloat = 44
         var index: Int = 0
-        if actionSheetTitle != nil && actionSheetTitle.characters.count != 0 {
+        if actionSheetTitle != nil && actionSheetTitle?.characters.count != 0 {
             if hasCancelButton {
                 index = 2
             }else {
@@ -150,7 +150,7 @@ public class PGActionSheet: UIViewController {
 
 extension PGActionSheet {
     fileprivate func hasTitle() -> Bool {
-        return actionSheetTitle != nil && actionSheetTitle.characters.count != 0
+        return actionSheetTitle != nil && actionSheetTitle!.characters.count != 0
     }
     
     fileprivate func hasButtonList() -> Bool {
@@ -281,10 +281,10 @@ extension PGActionSheet: UITableViewDelegate {
             return
         }
         if handler != nil {
-            handler(indexPath.row)
+            handler!(indexPath.row)
         }
         if (delegate != nil) {
-            self.delegate.actionSheet?(self, clickedButtonAt: indexPath.row)
+            self.delegate?.actionSheet!(self, clickedButtonAt: indexPath.row)
         }
     }
     
@@ -300,7 +300,7 @@ extension PGActionSheet: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if hasCancelButton && self.buttonList != nil && self.buttonList.count != 0 {
-            if actionSheetTitle != nil && actionSheetTitle.characters.count != 0 {
+            if actionSheetTitle != nil && actionSheetTitle?.characters.count != 0 {
                 if section == 2 {
                     return headerHeight
                 }

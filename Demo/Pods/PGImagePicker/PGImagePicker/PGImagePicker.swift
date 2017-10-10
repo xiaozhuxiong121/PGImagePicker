@@ -68,7 +68,7 @@ open class PGImagePicker: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isAnimated = true
     }

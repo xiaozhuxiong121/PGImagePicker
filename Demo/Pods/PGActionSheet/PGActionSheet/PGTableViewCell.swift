@@ -10,7 +10,7 @@ import UIKit
 
 class PGTableViewCell: UITableViewCell {
     //MARK: - public property
-    public var signlabel: UILabel!
+    internal var signlabel: UILabel!
     
     //MARK: - system cycle
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
