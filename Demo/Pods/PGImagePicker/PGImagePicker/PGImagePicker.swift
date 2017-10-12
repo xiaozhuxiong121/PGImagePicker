@@ -68,7 +68,7 @@ open class PGImagePicker: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override open func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isAnimated = true
     }
@@ -146,7 +146,7 @@ open class PGImagePicker: UIViewController {
     }
     
     private func setupCountLabel() {
-        let width: CGFloat = 50
+        let width: CGFloat = 100
         let height: CGFloat = 30.0
         let x: CGFloat = (PGImagePickerScreenSize.width - width) / 2
         var y: CGFloat = PGImagePickerScreenSize.height - 30 - height / 2
