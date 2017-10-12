@@ -85,12 +85,10 @@ public class PGScrollView: UIScrollView, UIScrollViewDelegate {
 extension PGScrollView {
     fileprivate func frameLogic() ->CGRect{
         var scale: CGFloat = 1.0
-        if self.tapImageView.image != nil && (self.tapImageView.image?.size.width)! != 0 {
-            if ((self.tapImageView.image?.size.width) != nil) {
-                scale = PGImagePickerScreenSize.width / (self.tapImageView.image?.size.width)!
-            }else {
-                scale = PGImagePickerScreenSize.width / (self.tapImageView.image?.size.width)!
-            }
+        if ((self.tapImageView.image?.size.width) != nil) {
+            scale = PGImagePickerScreenSize.width / (self.tapImageView.image?.size.width)!
+        }else {
+            scale = PGImagePickerScreenSize.width / self.tapImageView.frame.size.width
         }
         let width = PGImagePickerScreenSize.width
         var height: CGFloat = 1.0
