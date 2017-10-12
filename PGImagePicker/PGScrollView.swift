@@ -121,34 +121,23 @@ extension PGScrollView {
             self.isUserInteractionEnabled = true
         }
     }
-    /*
-     CABasicAnimation *opacityAnimation = [CABasicAnimationanimationWithKeyPath:@"opacity"];
-     
-     opacityAnimation.fromValue = [NSNumbernumberWithFloat:1.0];
-     
-     opacityAnimation.toValue = [NSNumbernumberWithFloat:0.0];
-     
-     opacityAnimation.duration = 2.0f;
-     
-     opacityAnimation.autoreverses= NO;
-     
-     opacityAnimation.repeatCount = MAXFLOAT;
-     */
+
     @objc fileprivate func tapHandler(_ touch: UITouch) {
         isTapTouch = true
         self.isUserInteractionEnabled = false
         self.bounds = CGRect(x: 0, y: 0, width: PGImagePickerScreenSize.width, height: PGImagePickerScreenSize.height)
         let duration = 0.18 / PGImagePickerScreenSize.width * self.imageView.frame.size.width
         guard self.tapImageView.superview != nil else {
+            let duration: CFTimeInterval = 0.3
             let opacityAnimation = CABasicAnimation.init(keyPath: "opacity")
             opacityAnimation.fromValue = 1.0
             opacityAnimation.toValue = 0
-            opacityAnimation.duration = CFTimeInterval(0.3)
+            opacityAnimation.duration = duration
             
             let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale")
             scaleAnimation.fromValue = 1.0
             scaleAnimation.toValue = 1.5
-            scaleAnimation.duration = CFTimeInterval(0.3)
+            scaleAnimation.duration = duration
             scaleAnimation.delegate = self
             self.imageView.layer.add(opacityAnimation, forKey: "opacity")
             self.imageView.layer.add(scaleAnimation, forKey: "scale")
