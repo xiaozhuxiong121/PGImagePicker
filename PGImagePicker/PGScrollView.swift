@@ -126,7 +126,7 @@ extension PGScrollView {
         isTapTouch = true
         self.isUserInteractionEnabled = false
         self.bounds = CGRect(x: 0, y: 0, width: PGImagePickerScreenSize.width, height: PGImagePickerScreenSize.height)
-        let duration = 0.25 / PGImagePickerScreenSize.width * self.imageView.frame.size.width
+        let duration = 0.25 
         guard self.tapImageView.superview != nil else {
             let duration: CFTimeInterval = 0.3
             let opacityAnimation = CABasicAnimation.init(keyPath: "opacity")
