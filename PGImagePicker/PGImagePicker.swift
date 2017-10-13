@@ -42,7 +42,8 @@ open class PGImagePicker: UIViewController {
         self.imageViews = imageViews
         self.windowLevel = UIApplication.shared.keyWindow?.windowLevel
         super.init(nibName: nil, bundle: nil)
-        self.view.backgroundColor = UIColor.black
+        self.modalPresentationStyle = .custom
+        self.view.backgroundColor = UIColor.clear
         self.view.isUserInteractionEnabled = true
         self.view.isMultipleTouchEnabled = false
         guard imageViews != nil else {
@@ -122,7 +123,7 @@ open class PGImagePicker: UIViewController {
         bounds.size.width += imageViewSpace
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
         self.view.addSubview(collectionView)
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.black
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isPagingEnabled = true
