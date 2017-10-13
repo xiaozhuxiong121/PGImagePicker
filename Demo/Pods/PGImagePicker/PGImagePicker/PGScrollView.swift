@@ -23,7 +23,7 @@ open class PGScrollView: UIScrollView, UIScrollViewDelegate {
     
     //MARK: - private property
     fileprivate var isTapTouch: Bool = false
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.imageView = UIImageView(frame: self.frame)
@@ -121,12 +121,12 @@ extension PGScrollView {
             self.isUserInteractionEnabled = true
         }
     }
-
+    
     @objc fileprivate func tapHandler(_ touch: UITouch) {
         isTapTouch = true
         self.isUserInteractionEnabled = false
         self.bounds = CGRect(x: 0, y: 0, width: PGImagePickerScreenSize.width, height: PGImagePickerScreenSize.height)
-        let duration = 0.18 / PGImagePickerScreenSize.width * self.imageView.frame.size.width
+        let duration = 0.25 
         guard self.tapImageView.superview != nil else {
             let duration: CFTimeInterval = 0.3
             let opacityAnimation = CABasicAnimation.init(keyPath: "opacity")
@@ -139,13 +139,15 @@ extension PGScrollView {
             scaleAnimation.toValue = 1.5
             scaleAnimation.duration = duration
             scaleAnimation.delegate = self
-            self.imageView.layer.add(opacityAnimation, forKey: "opacity")
+            self.superview?.superview?.superview?.layer.add(opacityAnimation, forKey: "opacity")
             self.imageView.layer.add(scaleAnimation, forKey: "scale")
+            
             return
         }
-        UIView.animate(withDuration: TimeInterval(duration), animations: {
+        self.superview?.superview?.superview?.backgroundColor = UIColor.clear
+        UIView.animate(withDuration:  TimeInterval(duration), delay: 0, options: .curveLinear, animations: {
             self.imageView.frame = self.convertRect(for: self.tapImageView)
-        }) { (tf) in
+        }) { _ in
             if (self.tapCallback != nil) {
                 self.tapCallback(self.imageView)
             }
