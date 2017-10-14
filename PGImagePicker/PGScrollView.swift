@@ -96,20 +96,18 @@ extension PGScrollView {
     fileprivate func frameLogic() ->CGRect{
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
-        var index = screenWidth
-        if screenWidth > screenHeight {
-            index = screenHeight
-        }
-        var index1: CGFloat = (self.tapImageView.image?.size.width)!
-        if index1 > (self.tapImageView.image?.size.height)! {
-            index1 = (self.tapImageView.image?.size.height)!
-        }
+        let imageWidth = (self.tapImageView.image?.size.width)!
+        let imageHeight = (self.tapImageView.image?.size.height)!
+        var width: CGFloat = 1.0
+        var height: CGFloat = 1.0
         var scale: CGFloat = 1.0
-        if (index1 != 0) {
-            scale = index / index1
+        if screenWidth > screenHeight && imageHeight != 0 {//以高度为基准，等比例宽度
+            scale = screenHeight / imageHeight
+        }else if imageWidth != 0 { //以宽度为基准，等比例高度
+            scale = screenWidth / imageWidth
         }
-        let width = (self.tapImageView.image?.size.width)! * scale
-        let height = (self.tapImageView.image?.size.height)! * scale
+        width = scale * imageWidth
+        height = scale * imageHeight
         let frame = CGRect(x: 0, y: 0, width: width, height: height)
         return frame
     }
