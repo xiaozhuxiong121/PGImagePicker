@@ -22,6 +22,7 @@ open class PGImagePicker: UIViewController {
     public var albumName: String = ""
     
     //MARK: - private property
+    fileprivate var flowLayout: UICollectionViewFlowLayout!
     fileprivate var countLabel: UILabel!
     fileprivate var pageControl: UIPageControl!
     fileprivate let pageControlType: PageControlType
@@ -34,7 +35,7 @@ open class PGImagePicker: UIViewController {
     fileprivate var currentIndex: Int = 0
     fileprivate var lastOffsetX: CGFloat = 0
     fileprivate let cellWithReuseIdentifier  = "PGCollectionViewCell"
-    
+    fileprivate var deviceOrientationCompleted: Bool = true
     //MARK: - system cycle
     required public init(currentImageView: UIImageView!,  pageControlType: PageControlType = .type1, imageViews: [UIImageView]? = nil) {
         self.pageControlType = pageControlType
@@ -43,7 +44,7 @@ open class PGImagePicker: UIViewController {
         self.windowLevel = UIApplication.shared.keyWindow?.windowLevel
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .custom
-        self.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.black
         self.view.isUserInteractionEnabled = true
         self.view.isMultipleTouchEnabled = false
         guard imageViews != nil else {
@@ -101,6 +102,45 @@ open class PGImagePicker: UIViewController {
         }
     }
     
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        self.view.isUserInteractionEnabled = false
+        deviceOrientationCompleted = false
+        self.flowLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        var bounds = self.view.bounds
+        bounds.size.width += imageViewSpace
+        self.collectionView.frame = bounds
+        bounds.origin.x += CGFloat(self.currentIndex) * bounds.size.width
+        self.collectionView.bounds = bounds
+        if (pageControl != nil) {
+            let width: CGFloat = CGFloat(13 * self.imageViews.count)
+            let height: CGFloat = 37.0
+            let x: CGFloat = (UIScreen.main.bounds.size.width - width) / 2
+            let y: CGFloat = UIScreen.main.bounds.size.height - 20 - height / 2
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            self.pageControl.frame = frame
+        }
+        if (countLabel != nil) {
+            let width: CGFloat = 100
+            let height: CGFloat = 30.0
+            let x: CGFloat = (UIScreen.main.bounds.size.width - width) / 2
+            var y: CGFloat = UIScreen.main.bounds.size.height - 30 - height / 2
+            if self.pageControlType == .type3 {
+                y = 30
+            }
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            self.countLabel.frame = frame
+        }
+        deviceOrientationCompleted = true
+        self.view.isUserInteractionEnabled = true
+    }
+    
+    //MARK: - open method
+    open func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
+        cell.scrollView.imageView.image = imageView.image
+    }
+    
     //MARK: - private method
     @objc private func longPressHandler(_ sender: UIGestureRecognizer) {
         guard sender.state == .began else {
@@ -113,18 +153,18 @@ open class PGImagePicker: UIViewController {
     }
     
     private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: PGImagePickerScreenSize.width, height: PGImagePickerScreenSize.height)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = imageViewSpace
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, imageViewSpace)
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = imageViewSpace
+        flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, imageViewSpace)
         var bounds = self.view.bounds
         bounds.size.width += imageViewSpace
-        collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: bounds, collectionViewLayout: flowLayout)
         self.view.addSubview(collectionView)
-        collectionView.backgroundColor = UIColor.black
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isPagingEnabled = true
         collectionView.delegate = self
@@ -137,8 +177,8 @@ open class PGImagePicker: UIViewController {
     private func setupPageControl() {
         let width: CGFloat = CGFloat(13 * self.imageViews.count)
         let height: CGFloat = 37.0
-        let x: CGFloat = (PGImagePickerScreenSize.width - width) / 2
-        let y: CGFloat = PGImagePickerScreenSize.height - 20 - height / 2
+        let x: CGFloat = (UIScreen.main.bounds.size.width - width) / 2
+        let y: CGFloat = UIScreen.main.bounds.size.height - 20 - height / 2
         let frame = CGRect(x: x, y: y, width: width, height: height)
         pageControl = UIPageControl(frame: frame)
         pageControl.numberOfPages = (imageViews?.count)!
@@ -149,8 +189,8 @@ open class PGImagePicker: UIViewController {
     private func setupCountLabel() {
         let width: CGFloat = 100
         let height: CGFloat = 30.0
-        let x: CGFloat = (PGImagePickerScreenSize.width - width) / 2
-        var y: CGFloat = PGImagePickerScreenSize.height - 30 - height / 2
+        let x: CGFloat = (UIScreen.main.bounds.size.width - width) / 2
+        var y: CGFloat = UIScreen.main.bounds.size.height - 30 - height / 2
         if self.pageControlType == .type3 {
             y = 30
         }
@@ -158,12 +198,9 @@ open class PGImagePicker: UIViewController {
         countLabel = UILabel(frame: frame)
         countLabel.font = UIFont.boldSystemFont(ofSize: 20)
         countLabel.textColor = UIColor.white
+        countLabel.textAlignment = .center 
         countLabel.text = String(currentIndex + 1) + "/" + String(imageViews.count)
         self.view.addSubview(countLabel)
-    }
-    
-    open func setupImageView(cell: PGCollectionViewCell, indexPath: IndexPath, imageView: UIImageView){
-        cell.scrollView.imageView.image = imageView.image
     }
 }
 
@@ -271,7 +308,7 @@ extension PGImagePicker: UICollectionViewDataSource {
 
 extension PGImagePicker: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: PGImagePickerScreenSize.width, height: PGImagePickerScreenSize.height)
+        return CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -282,6 +319,9 @@ extension PGImagePicker: UICollectionViewDelegate {
 
 extension PGImagePicker: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard deviceOrientationCompleted else {
+            return
+        }
         var page = Int(floor(scrollView.contentOffset.x / scrollView.bounds.size.width))
         if lastOffsetX >= scrollView.contentOffset.x {
             page = Int(ceil(scrollView.contentOffset.x / scrollView.bounds.size.width))
