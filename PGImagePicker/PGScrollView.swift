@@ -167,8 +167,14 @@ extension PGScrollView {
             animationOfOpacityAndScale()
             return
         }
-        
-        let duration = 0.25
+        var duration = 0.0
+        let screenWidth = UIScreen.main.bounds.size.width
+        let screenHeight = UIScreen.main.bounds.size.height
+        if screenWidth > screenHeight {
+            duration = Double(0.20 / screenHeight * self.imageView.frame.size.height)
+        }else {
+            duration = Double(0.20 / screenWidth * self.imageView.frame.size.width)
+        }
         self.superview?.superview?.superview?.superview?.backgroundColor = UIColor.clear
         UIView.animate(withDuration:  TimeInterval(duration), delay: 0, options: .curveLinear, animations: {
             self.imageView.frame = frame
