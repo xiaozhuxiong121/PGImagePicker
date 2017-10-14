@@ -23,4 +23,9 @@ public class PGCollectionViewCell: UICollectionViewCell {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.scrollView.frame = self.bounds
+    }
 }

@@ -1,7 +1,7 @@
 PODS:
   - Kingfisher (4.1.0)
   - PGActionSheet (1.0.5)
-  - PGImagePicker (1.0.7):
+  - PGImagePicker (1.1.0):
     - PGActionSheet
   - PGImagePickerKingfisher (1.0.3):
     - Kingfisher
@@ -13,9 +13,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Kingfisher: f14df8cbe576bf55f211fa589e9869bceb4ea87d
   PGActionSheet: f76c2826fd18a2f354a3cc7b175ceee3f1e840fb
-  PGImagePicker: 52b1a8281adc4dfb441ff8a6bb1c4ccaa6bd8e04
+  PGImagePicker: dfaf94226ac443304dd7440c924588e4e8cf3ad2
   PGImagePickerKingfisher: a9e1fa9b0105e800ac6c6e887f0874328c039b08
 
 PODFILE CHECKSUM: 97118fface4db66a37607268e662bb55af9a67c3
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1
