@@ -83,7 +83,7 @@ present(imagePicker, animated: false, completion: nil)
 
 # 许可证
 
-PGNetworkHelper 使用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
+PGImagePicker 使用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
 
 
 
