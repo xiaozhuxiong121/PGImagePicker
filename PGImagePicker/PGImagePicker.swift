@@ -260,7 +260,6 @@ extension PGImagePicker {
 
 extension PGImagePicker: PGActionSheetDelegate {
     public func actionSheet(_ actionSheet: PGActionSheet, clickedButtonAt index: Int) {
-        self.dismiss(animated: false, completion: nil)
         var image: UIImage = self.currentImageView.image!
         if hasImageViews() {
             image = self.imageViews[self.currentIndex].image!
