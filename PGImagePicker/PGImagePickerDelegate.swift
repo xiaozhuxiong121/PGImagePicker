@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-@objc public protocol PGImagePickerDelegate {
+@objc public protocol PGImagePickerDelegate: NSObjectProtocol {
     @objc optional func imagePicker(imagePicker: PGImagePicker, didSelectImageView imageView: UIImageView, didSelectImageViewAt index: Int)
 }

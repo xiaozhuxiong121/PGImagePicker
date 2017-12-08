@@ -18,7 +18,7 @@ public enum PageControlType: Int {
 open class PGImagePicker: UIViewController {
     
     //MARK: - pulic property
-    public var delegate: PGImagePickerDelegate?
+    public weak var delegate: PGImagePickerDelegate?
     public var albumName: String = ""
     
     //MARK: - private property
