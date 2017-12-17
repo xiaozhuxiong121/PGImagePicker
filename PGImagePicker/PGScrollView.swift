@@ -122,13 +122,7 @@ extension PGScrollView {
         self.tapImageView = imageView
         self.imageView.frame = self.convertRect(for: self.tapImageView)
         let frame = frameLogic()
-        self.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.15, animations: {
-            self.imageView.frame = frame
-            self.imageView.center = self.center
-        }) {_ in
-            self.isUserInteractionEnabled = true
-        }
+        self.imageView.frame = frame
     }
     
     func animationOfOpacityAndScale() {
